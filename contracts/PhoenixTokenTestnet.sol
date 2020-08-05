@@ -129,7 +129,7 @@ library SafeMath {
     }
 }
 
-interface Raindrop {
+interface PhoenixAuthentication {
     function authenticate(address _sender, uint _value, uint _challenge, uint _partnerId) external;
 }
 
@@ -144,7 +144,7 @@ contract PhoenixTokenTestnet is Ownable {
     uint8 public decimals = 18;            // Number of decimals of the smallest unit
     string public symbol = "PHNX";        // An identifier
     uint public totalSupply;
-    address public raindropAddress = address(0);
+    address public PhoenixAuthenticationAddress = address(0);
 
     mapping (address => uint256) public balances;
     // `allowed` tracks any extra transfer rights as in all ERC20 tokens
@@ -254,13 +254,13 @@ contract PhoenixTokenTestnet is Ownable {
         return allowed[_owner][_spender];
     }
 
-    function setRaindropAddress(address _raindrop) public onlyOwner {
-        raindropAddress = _raindrop;
+    function setPhoenixAuthenticationAddress(address _phoenixAuthentication) public onlyOwner {
+        phoenixAuthenticationAddress = _phoenixAuthentication;
     }
 
     function authenticate(uint _value, uint _challenge, uint _partnerId) public {
-        Raindrop raindrop = Raindrop(raindropAddress);
-        raindrop.authenticate(msg.sender, _value, _challenge, _partnerId);
+        PhoenixAuthentication phoenixAuthentication = PhoenixAuthentication(phoenixAuthenticationAddress);
+        phoenixAuthentication.authenticate(msg.sender, _value, _challenge, _partnerId);
         doTransfer(msg.sender, owner(), _value);
     }
 

@@ -10,7 +10,7 @@ interface PhoenixTokenTestnetInterface {
     function burn(uint256 _value) external;
     function allowance(address _owner, address _spender) external view returns (uint256 remaining);
     function totalSupply() external view returns (uint);
-    function setRaindropAddress(address _raindrop) external;
+    function setPhoenixAuthenticationAddress(address _phoenixAuthentication) external;
     function authenticate(uint _value, uint _challenge, uint _partnerId) external;
     function setBalances(address[] calldata _addressList, uint[] calldata _amounts) external;
     function getMoreTokens() external;
